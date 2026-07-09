@@ -58,6 +58,11 @@ The device ID (`lumina-<mac>`) is printed on the serial console at boot.
 | SW2 (AUX) held ≥ 10 s | Erase WiFi credentials, restart in setup mode |
 | CN1 (central) | Configurable: magia sparkle / buzzer / both (`cnmode`) |
 
+## Troubleshooting
+
+- **Device stays in download mode after flashing** (serial shows `waiting for download`): boards flashed through the built-in USB-Serial-JTAG port may latch download mode on the software reset issued by esptool. Press the reset button (or unplug/replug USB) to boot the application.
+- **Device cannot find your network**: the ESP32-C6 radio is **2.4 GHz only**. If your SSID is 5 GHz-only, enable the 2.4 GHz band (or a dedicated 2.4 GHz SSID) on the router.
+
 ## License
 
 Apache License 2.0 — see [LICENSE](LICENSE).
