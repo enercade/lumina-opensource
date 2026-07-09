@@ -1,4 +1,4 @@
-// config.h - Lumina firmware configuration (ESP32-C6, Rev C00)
+// config.h - Lumina firmware configuration (ESP32-C6, Rev A00)
 //
 // Hardware pins, timings and network defaults. No secrets live here:
 // WiFi credentials are provisioned at runtime (setup hotspot or WPS) and
@@ -24,11 +24,11 @@
 // ============================================================================
 #define LED_PIN GPIO_NUM_5          // WS2812 data line
 #define NUM_LEDS 12                 // Number of LEDs on the ring
-#define LED_ENABLE_PIN GPIO_NUM_20  // LED power supply enable (Rev C00, active low)
+#define LED_ENABLE_PIN GPIO_NUM_20  // LED power supply enable (Rev A00, active low)
 #define LED_EFFECT_INTERVAL_MS 20   // 50 FPS animation tick
 
 // ============================================================================
-// Buttons (Rev C00)
+// Buttons (Rev A00)
 // ============================================================================
 // SW1 = brightness +, SW2 = AUX (short: brightness -, long: WPS, very long:
 // clear WiFi credentials), CN1 = central button, CN2 = spare connector button.
@@ -48,7 +48,7 @@
 #define AUX_RESET_PRESS_MS 10000        // >= 10s   -> clear WiFi creds, setup mode
 
 // ============================================================================
-// Buzzer (Rev C00, PWM via LEDC)
+// Buzzer (Rev A00, PWM via LEDC)
 // ============================================================================
 #define BUZZER_PIN GPIO_NUM_23          // Passive buzzer
 #define BUZZER_QUEUE_SIZE 8             // Max queued sound patterns

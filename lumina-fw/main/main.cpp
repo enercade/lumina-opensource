@@ -3,7 +3,7 @@
 // Lumina joins the home WiFi network (provisioned via setup hotspot or WPS)
 // and exposes itself over MQTT on lumina-<mac>/cmd + lumina-<mac>/info.
 //
-// Physical controls (Rev C00):
+// Physical controls (Rev A00):
 //   - SW1 (GPIO0): brightness +
 //   - SW2 (GPIO9): AUX button
 //       short press          -> brightness -
@@ -134,7 +134,7 @@ extern "C" void app_main(void) {
     }
     ESP_ERROR_CHECK(ret);
 
-    // --- LED power supply enable (Rev C00: GPIO20, active low) ---
+    // --- LED power supply enable (Rev A00: GPIO20, active low) ---
     gpio_config_t led_enable_conf = {
         .pin_bit_mask = (1ULL << LED_ENABLE_PIN),
         .mode = GPIO_MODE_OUTPUT,

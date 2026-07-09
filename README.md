@@ -2,6 +2,8 @@
 
 **An open-source ambient device that makes autonomous energy systems visible and understandable.**
 
+![Lumina exploded view: 3D-printed enclosure, LED board and controller board](docs/pictures/lumina-exploded-view.png)
+
 Lumina is a small ambient device that translates the behaviour of distributed energy systems into clear light, haptic and audio cues. It is developed by [Enercade srl](https://www.enercade.com) within **COACH**, an exploration of the EU-funded **LAUDS Factories** project.
 
 This repository contains everything needed to build, program and control a Lumina device: hardware sources, firmware, control software and (soon) the mechanical parts.
