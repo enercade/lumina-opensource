@@ -44,7 +44,7 @@ The device ID (`lumina-<mac>`) is printed on the serial console at boot.
 
 ## Configuration
 
-- **WiFi credentials** are stored in NVS at runtime — never in the source tree. For development you can copy `main/wifi_dev_credentials.example.h` to `main/wifi_dev_credentials.h` (git-ignored) to seed your network on first boot.
+- **WiFi credentials** are stored in NVS at runtime — never in the source tree. For development you can copy `main/wifi_dev_credentials.example.h` to `main/wifi_dev_credentials.h` (git-ignored) to seed your network. Seeding happens once per NVS lifetime, so "forget WiFi" (AUX held ≥ 10 s) still drops the device into the setup hotspot; erase the NVS partition (`idf.py erase-flash` or `esptool erase_region 0x9000 0x6000`) to seed again.
 - **MQTT broker** defaults to `mqtt://broker.hivemq.com:1883` (`MQTT_DEFAULT_BROKER_URI` in `config.h`) and can be changed per device from the setup portal (Advanced section). The value is stored in NVS.
 - **Pins and timings** live in `main/config.h`.
 
