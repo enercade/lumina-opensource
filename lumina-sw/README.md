@@ -15,7 +15,7 @@ Open the printed URL (default `http://localhost:5173`).
 
 ## Usage
 
-1. **Add a device** by its ID: 12 hex digits derived from the WiFi MAC (e.g. `a1b2c3d4e5f6`). The ID is printed on the device's serial console at boot as `lumina-<mac>`.
+1. **Add a device** by its ID: 12 hex digits derived from the WiFi MAC (e.g. `a1b2c3d4e5f6`). The ID is shown on the device's setup portal page and printed on the serial console at boot as `lumina-<mac>`.
 2. The app subscribes to `lumina-<mac>/info` (retained), so the device state appears immediately: online/offline, firmware, network, light state.
 3. Use the controls — power, color, brightness, effect, buzzer, central-button mode, magia — each publishes a JSON command to `lumina-<mac>/cmd`.
 

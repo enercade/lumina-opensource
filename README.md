@@ -6,6 +6,8 @@ Lumina is a small ambient device that translates the behaviour of distributed en
 
 This repository contains everything needed to build, program and control a Lumina device: hardware sources, firmware, control software and (soon) the mechanical parts.
 
+**➜ New here? Follow the step-by-step guide: [Build your own Lumina](docs/BUILDING.md)**
+
 ## Project context
 
 ### LAUDS Factories
@@ -26,7 +28,7 @@ The work is carried out over six months at **Bauhaus-Universität Weimar** and b
 | [`lumina-fw/`](lumina-fw/) | ESP32-C6 firmware (ESP-IDF): WiFi provisioning, WPS, MQTT control | [Apache 2.0](lumina-fw/LICENSE) |
 | [`lumina-sw/`](lumina-sw/) | Local control app (React + MQTT over WebSocket) | [Apache 2.0](lumina-sw/LICENSE) |
 | [`lumina-mech/`](lumina-mech/) | 3D-printable mechanical parts (STL) — coming soon | [CERN-OHL-W v2](lumina-mech/LICENSE) |
-| Documentation (READMEs, guides) | | [CC BY-SA 4.0](LICENSE-CC-BY-SA-4.0) |
+| [`docs/`](docs/) | Guides ([Build your own Lumina](docs/BUILDING.md)) and READMEs | [CC BY-SA 4.0](LICENSE-CC-BY-SA-4.0) |
 
 ## How Lumina works
 
@@ -68,7 +70,7 @@ Alternatively, hold the **AUX button (SW2) for 3 seconds** and press the WPS but
 
 ## MQTT protocol
 
-Each device uses a topic root derived from its WiFi MAC address: `lumina-<mac>` (12 lowercase hex digits, e.g. `lumina-a1b2c3d4e5f6`). The device ID is printed on the serial console at boot.
+Each device uses a topic root derived from its WiFi MAC address: `lumina-<mac>` (12 lowercase hex digits, e.g. `lumina-a1b2c3d4e5f6`). The device ID is shown on the setup portal page and printed on the serial console at boot.
 
 | Topic | Direction | Content |
 |---|---|---|

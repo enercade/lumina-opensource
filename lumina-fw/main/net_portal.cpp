@@ -48,6 +48,7 @@ static const char SETUP_HTML[] =
 "</style></head><body><div class=\"wrap\">"
 "<h1>&#128161; Lumina setup</h1>"
 "<p class=\"sub\">Connect Lumina to your WiFi network</p>"
+"<p class=\"sub\">Device ID: <b id=\"devid\">...</b> &mdash; you need it in the control app</p>"
 "<div class=\"card\">"
 "<button id=\"scan\">Scan networks</button>"
 "<select id=\"nets\" hidden></select>"
@@ -62,7 +63,9 @@ static const char SETUP_HTML[] =
 "<small>Lumina &middot; the device restarts after saving</small>"
 "</div><script>"
 "var nets=document.getElementById('nets'),msg=document.getElementById('msg');"
-"fetch('/api/config').then(r=>r.json()).then(c=>{document.getElementById('broker').value=c.broker;});"
+"fetch('/api/config').then(r=>r.json()).then(c=>{"
+"document.getElementById('broker').value=c.broker;"
+"document.getElementById('devid').textContent=c.device;});"
 "document.getElementById('scan').addEventListener('click',function(){"
 " msg.textContent='Scanning...';"
 " fetch('/api/scan').then(r=>r.json()).then(function(list){"
@@ -92,13 +95,14 @@ static esp_err_t index_handler(httpd_req_t* req) {
     return httpd_resp_send(req, SETUP_HTML, HTTPD_RESP_USE_STRLEN);
 }
 
-// Current configuration shown by the portal (broker URI only - never the
-// WiFi password).
+// Current configuration shown by the portal: device ID and broker URI
+// (never the WiFi password).
 static esp_err_t config_handler(httpd_req_t* req) {
     char broker[128];
     netMqttGetBrokerUri(broker, sizeof(broker));
-    char json[192];
-    snprintf(json, sizeof(json), "{\"broker\":\"%s\"}", broker);
+    char json[224];
+    snprintf(json, sizeof(json), "{\"device\":\"" MQTT_TOPIC_PREFIX "%s\",\"broker\":\"%s\"}",
+             netWifiGetMacId(), broker);
     httpd_resp_set_type(req, "application/json");
     return httpd_resp_send(req, json, HTTPD_RESP_USE_STRLEN);
 }

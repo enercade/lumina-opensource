@@ -40,7 +40,7 @@ idf.py build
 idf.py -p <PORT> flash monitor
 ```
 
-The device ID (`lumina-<mac>`) is printed on the serial console at boot.
+The device ID (`lumina-<mac>`) is shown on the setup portal page and printed on the serial console at boot.
 
 ## Configuration
 
