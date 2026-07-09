@@ -320,19 +320,22 @@ esp_err_t netWifiInit(net_wifi_state_cb_t state_cb) {
     bool has_creds = load_credentials();
 
 #ifdef LUMINA_DEV_WIFI_SSID
-    // Seed the development credentials only once, so "forget WiFi" (AUX held
-    // >= 10 s) still leads to the setup hotspot on development builds.
-    if (!has_creds) {
+    // Seed the development credentials only once per NVS lifetime, so
+    // "forget WiFi" (AUX held >= 10 s) still leads to the setup hotspot on
+    // development builds. Existing credentials also consume the seed.
+    {
         uint8_t seeded = 0;
         nvs_handle_t h;
         if (nvs_open(NVS_NAMESPACE, NVS_READWRITE, &h) == ESP_OK) {
             nvs_get_u8(h, NVS_KEY_SEEDED, &seeded);
-            if (!seeded &&
-                netWifiSaveCredentials(LUMINA_DEV_WIFI_SSID, LUMINA_DEV_WIFI_PASSWORD) == ESP_OK) {
-                ESP_LOGW(TAG, "seeded development WiFi credentials (wifi_dev_credentials.h)");
+            if (!seeded) {
+                if (!has_creds &&
+                    netWifiSaveCredentials(LUMINA_DEV_WIFI_SSID, LUMINA_DEV_WIFI_PASSWORD) == ESP_OK) {
+                    ESP_LOGW(TAG, "seeded development WiFi credentials (wifi_dev_credentials.h)");
+                    has_creds = true;
+                }
                 nvs_set_u8(h, NVS_KEY_SEEDED, 1);
                 nvs_commit(h);
-                has_creds = true;
             }
             nvs_close(h);
         }
