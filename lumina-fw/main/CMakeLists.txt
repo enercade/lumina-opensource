@@ -1,0 +1,22 @@
+idf_component_register(
+    SRCS
+        "main.cpp"
+        "app_control.cpp"
+        "net_wifi.cpp"
+        "net_portal.cpp"
+        "net_mqtt.cpp"
+    INCLUDE_DIRS "."
+    REQUIRES
+        "hw_leds"
+        "hw_btns"
+        "hw_buzz"
+        "nvs_flash"
+        "esp_wifi"
+        "wpa_supplicant"
+        "esp_event"
+        "esp_netif"
+        "esp_http_server"
+        "mqtt"
+        "json"
+        "driver"
+)

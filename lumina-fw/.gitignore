@@ -1,0 +1,8 @@
+build/
+sdkconfig
+sdkconfig.old
+*.log
+.vscode/
+
+# Local development WiFi credentials - never commit
+main/wifi_dev_credentials.h

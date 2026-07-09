@@ -1,0 +1,4 @@
+Record=TopLevelDocument|FileName=lumina.SchDoc|SheetNumber=1
+Record=SheetSymbol|SourceDocument=lumina.SchDoc|Designator=LED|SchDesignator=LED|FileName=lumina-LED.SchDoc|SheetNumber= |SymbolType=Normal|RawFileName=lumina-LED.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=lumina.SchDoc|Designator=MCU|SchDesignator=MCU|FileName=lumina-MCU.SchDoc|SheetNumber= |SymbolType=Normal|RawFileName=lumina-MCU.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=lumina.SchDoc|Designator=PWR|SchDesignator=PWR|FileName=lumina-PWR.SchDoc|SheetNumber= |SymbolType=Normal|RawFileName=lumina-PWR.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 

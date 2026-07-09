@@ -1,0 +1,7 @@
+# Internal working documents - not versioned
+lumina-documents-no-ver/
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
