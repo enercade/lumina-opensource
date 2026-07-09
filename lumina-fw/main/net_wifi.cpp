@@ -154,9 +154,11 @@ static void connect_station(void) {
     s_retry_count = 0;
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &sta_config));
-    ESP_ERROR_CHECK(esp_wifi_start());
 
+    // State must be CONNECTING before the STA_START event fires, or the
+    // handler would skip the esp_wifi_connect() call.
     set_state(NET_WIFI_STATE_CONNECTING);
+    ESP_ERROR_CHECK(esp_wifi_start());
     ESP_LOGI(TAG, "connecting to '%s'...", s_ssid);
 }
 

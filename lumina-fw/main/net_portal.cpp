@@ -178,7 +178,7 @@ static esp_err_t provision_handler(httpd_req_t* req) {
     }
 
     esp_err_t ret = httpd_resp_send(req, "{\"ok\":true}", HTTPD_RESP_USE_STRLEN);
-    ESP_LOGI(TAG, "provisioned - restarting to join '%s'", "network");
+    ESP_LOGI(TAG, "provisioned - restarting to join the new network");
     xTaskCreate(restart_task, "restart", TASK_STACK_SIZE_SMALL, NULL, TASK_PRIORITY_LOW, NULL);
     return ret;
 }

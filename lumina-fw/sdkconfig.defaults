@@ -11,3 +11,7 @@ CONFIG_ESP_WIFI_ENABLE_WPA3_SAE=y
 
 # HTTP server (setup portal)
 CONFIG_HTTPD_MAX_REQ_HDR_LEN=1024
+
+# Console on the built-in USB-Serial-JTAG port (the board is programmed and
+# monitored through it; UART0 pins are not routed to a USB bridge)
+CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y
