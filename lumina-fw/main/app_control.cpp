@@ -35,6 +35,16 @@ static void mark_changed(void) {
     s_state_changed = true;
 }
 
+// Percent <-> raw (0-255) conversions with rounding, so a value written as a
+// percentage reads back unchanged.
+static inline uint8_t pct_to_raw(int pct) {
+    return (uint8_t)((pct * 255 + 50) / 100);
+}
+
+static inline int raw_to_pct(uint8_t raw) {
+    return (raw * 100 + 128) / 255;
+}
+
 void appCtlInit(void) {
     s_center_mode = CENTER_MODE_BOTH;
     s_magia_active = false;
@@ -85,13 +95,13 @@ bool appCtlSetColorHex(const char* rrggbb) {
 void appCtlSetBrightnessPct(int pct) {
     if (pct < 0) pct = 0;
     if (pct > 100) pct = 100;
-    hwLedsSetBrightness((uint8_t)((pct * 255) / 100));
+    hwLedsSetBrightness(pct_to_raw(pct));
     mark_changed();
     ESP_LOGI(TAG, "brightness -> %d%%", pct);
 }
 
 void appCtlAdjustBrightnessPct(int delta_pct) {
-    int pct = (hwLedsGetBrightness() * 100) / 255;  // 0-255 -> 0-100%
+    int pct = raw_to_pct(hwLedsGetBrightness());
     pct += delta_pct;
     if (pct >= 100 || pct <= 0) {
         hwBuzzPlayInfo();  // audible end-stop cue
@@ -187,7 +197,7 @@ bool appCtlConsumeStateChanged(void) {
 
 int appCtlWriteStateJson(char* out, size_t out_size) {
     led_color_t c = hwLedsGetColor();
-    int pct = (hwLedsGetBrightness() * 100) / 255;   // 0-255 -> 0-100%
+    int pct = raw_to_pct(hwLedsGetBrightness());
     bool on = hwLedsGetStatus().enabled;
     return snprintf(out, out_size,
                     "\"power\":%d,\"brightness\":%d,\"color\":\"%02X%02X%02X\","
