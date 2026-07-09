@@ -5,3 +5,6 @@ lumina-documents-no-ver/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Local tooling
+.claude/
