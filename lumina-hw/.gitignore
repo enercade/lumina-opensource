@@ -1,0 +1,14 @@
+# Altium working files (editable sources are kept out of the public repo -
+# the fabrication outputs below are the published design)
+*.SchDoc
+*.PcbDoc
+*.PrjPcb
+*.PrjPcbStructure
+*.OutJob
+*.BomDoc
+*.Annotation
+*.RUL
+__Previews
+History
+Project\ Logs\ for\ *
+output*

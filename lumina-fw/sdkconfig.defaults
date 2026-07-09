@@ -1,0 +1,17 @@
+# Target chip
+CONFIG_IDF_TARGET="esp32c6"
+
+# 4 MB flash with a 1.5 MB app partition (WiFi + MQTT + TLS exceed 1 MB)
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+CONFIG_PARTITION_TABLE_SINGLE_APP_LARGE=y
+
+# WiFi: station + setup hotspot (APSTA) + WPS enrollee
+CONFIG_ESP_WIFI_SOFTAP_SUPPORT=y
+CONFIG_ESP_WIFI_ENABLE_WPA3_SAE=y
+
+# HTTP server (setup portal)
+CONFIG_HTTPD_MAX_REQ_HDR_LEN=1024
+
+# Console on the built-in USB-Serial-JTAG port (the board is programmed and
+# monitored through it; UART0 pins are not routed to a USB bridge)
+CONFIG_ESP_CONSOLE_USB_SERIAL_JTAG=y
